@@ -1,5 +1,8 @@
 
+// html打包插件
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// scss
 
 module.exports = {
     entry: {

@@ -1,4 +1,6 @@
 
-
 require("./scss/testModule.scss");
-require("./js/testModule.js");
+
+var m = require("./js/testModule.js");
+console.log(m.tpl);
+console.log(m.jq);

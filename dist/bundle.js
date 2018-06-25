@@ -86,6 +86,28 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./html/testModule.html":
+/*!******************************!*\
+  !*** ./html/testModule.html ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = \"\\r\\n<!DOCTYPE html>\\r\\n<html>\\r\\n<head>\\r\\n\\t<title></title>\\r\\n</head>\\r\\n<body>\\r\\n\\t<div>\\r\\n\\t\\tHello,world!!!!!!!!!!!!!!!!!!\\r\\n\\t\\t<img src=\\\"\" + __webpack_require__(/*! ../img/logo_new.jpg */ \"./img/logo_new.jpg\") + \"\\\" style=\\\"width: 100px;\\\">\\r\\n\\t</div>\\r\\n\\t<script type=\\\"text/javascript\\\" src=\\\"../js/jquery-3.1.1.min.js\\\"></script>\\r\\n</body>\\r\\n</html>\\r\\n\";\n\n//# sourceURL=webpack:///./html/testModule.html?");
+
+/***/ }),
+
+/***/ "./img/logo_new.jpg":
+/*!**************************!*\
+  !*** ./img/logo_new.jpg ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"images/logo_new.jpg\";\n\n//# sourceURL=webpack:///./img/logo_new.jpg?");
+
+/***/ }),
+
 /***/ "./index.js":
 /*!******************!*\
   !*** ./index.js ***!
@@ -93,7 +115,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\r\n\r\n__webpack_require__(/*! ./scss/testModule.scss */ \"./scss/testModule.scss\");\r\n__webpack_require__(/*! ./js/testModule.js */ \"./js/testModule.js\");\n\n//# sourceURL=webpack:///./index.js?");
+eval("\r\n__webpack_require__(/*! ./scss/testModule.scss */ \"./scss/testModule.scss\");\r\n\r\nvar m = __webpack_require__(/*! ./js/testModule.js */ \"./js/testModule.js\");\r\nconsole.log(m.tpl);\r\nconsole.log(m.jq);\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -102,9 +124,9 @@ eval("\r\n\r\n__webpack_require__(/*! ./scss/testModule.scss */ \"./scss/testMod
   !*** ./js/testModule.js ***!
   \**************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("document.write(\"Hello,webpack!\");\n\n//# sourceURL=webpack:///./js/testModule.js?");
+eval("\r\n// 加载文件内容\r\n__webpack_require__(/*! ../html/testModule.html */ \"./html/testModule.html\");\r\n\r\nvar tpl = __webpack_require__(/*! raw-loader!../html/testModule.html */ \"./node_modules/raw-loader/index.js!./html/testModule.html\");\r\nvar $ = __webpack_require__(/*! jquery */ \"jquery\");\r\n\r\nvar tplHtml = $(\"body\").html();\r\n\r\nmodule.exports={\r\n\ttpl:tpl,\r\n\tjq:tplHtml\r\n}\n\n//# sourceURL=webpack:///./js/testModule.js?");
 
 /***/ }),
 
@@ -127,6 +149,17 @@ eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loa
 /***/ (function(module, exports) {
 
 eval("/*\n\tMIT License http://www.opensource.org/licenses/mit-license.php\n\tAuthor Tobias Koppers @sokra\n*/\n// css base code, injected by the css-loader\nmodule.exports = function(useSourceMap) {\n\tvar list = [];\n\n\t// return the list of modules as css string\n\tlist.toString = function toString() {\n\t\treturn this.map(function (item) {\n\t\t\tvar content = cssWithMappingToString(item, useSourceMap);\n\t\t\tif(item[2]) {\n\t\t\t\treturn \"@media \" + item[2] + \"{\" + content + \"}\";\n\t\t\t} else {\n\t\t\t\treturn content;\n\t\t\t}\n\t\t}).join(\"\");\n\t};\n\n\t// import a list of modules into the list\n\tlist.i = function(modules, mediaQuery) {\n\t\tif(typeof modules === \"string\")\n\t\t\tmodules = [[null, modules, \"\"]];\n\t\tvar alreadyImportedModules = {};\n\t\tfor(var i = 0; i < this.length; i++) {\n\t\t\tvar id = this[i][0];\n\t\t\tif(typeof id === \"number\")\n\t\t\t\talreadyImportedModules[id] = true;\n\t\t}\n\t\tfor(i = 0; i < modules.length; i++) {\n\t\t\tvar item = modules[i];\n\t\t\t// skip already imported module\n\t\t\t// this implementation is not 100% perfect for weird media query combinations\n\t\t\t//  when a module is imported multiple times with different media queries.\n\t\t\t//  I hope this will never occur (Hey this way we have smaller bundles)\n\t\t\tif(typeof item[0] !== \"number\" || !alreadyImportedModules[item[0]]) {\n\t\t\t\tif(mediaQuery && !item[2]) {\n\t\t\t\t\titem[2] = mediaQuery;\n\t\t\t\t} else if(mediaQuery) {\n\t\t\t\t\titem[2] = \"(\" + item[2] + \") and (\" + mediaQuery + \")\";\n\t\t\t\t}\n\t\t\t\tlist.push(item);\n\t\t\t}\n\t\t}\n\t};\n\treturn list;\n};\n\nfunction cssWithMappingToString(item, useSourceMap) {\n\tvar content = item[1] || '';\n\tvar cssMapping = item[3];\n\tif (!cssMapping) {\n\t\treturn content;\n\t}\n\n\tif (useSourceMap && typeof btoa === 'function') {\n\t\tvar sourceMapping = toComment(cssMapping);\n\t\tvar sourceURLs = cssMapping.sources.map(function (source) {\n\t\t\treturn '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'\n\t\t});\n\n\t\treturn [content].concat(sourceURLs).concat([sourceMapping]).join('\\n');\n\t}\n\n\treturn [content].join('\\n');\n}\n\n// Adapted from convert-source-map (MIT)\nfunction toComment(sourceMap) {\n\t// eslint-disable-next-line no-undef\n\tvar base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));\n\tvar data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;\n\n\treturn '/*# ' + data + ' */';\n}\n\n\n//# sourceURL=webpack:///./node_modules/css-loader/lib/css-base.js?");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./html/testModule.html":
+/*!********************************************************!*\
+  !*** ./node_modules/raw-loader!./html/testModule.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = \"module.exports = \\\"\\\\r\\\\n<!DOCTYPE html>\\\\r\\\\n<html>\\\\r\\\\n<head>\\\\r\\\\n\\\\t<title></title>\\\\r\\\\n</head>\\\\r\\\\n<body>\\\\r\\\\n\\\\t<div>\\\\r\\\\n\\\\t\\\\tHello,world!!!!!!!!!!!!!!!!!!\\\\r\\\\n\\\\t\\\\t<img src=\\\\\\\"\\\" + require(\\\"../img/logo_new.jpg\\\") + \\\"\\\\\\\" style=\\\\\\\"width: 100px;\\\\\\\">\\\\r\\\\n\\\\t</div>\\\\r\\\\n\\\\t<script type=\\\\\\\"text/javascript\\\\\\\" src=\\\\\\\"../js/jquery-3.1.1.min.js\\\\\\\"></script>\\\\r\\\\n</body>\\\\r\\\\n</html>\\\\r\\\\n\\\";\"\n\n//# sourceURL=webpack:///./html/testModule.html?./node_modules/raw-loader");
 
 /***/ }),
 
@@ -160,6 +193,17 @@ eval("\n/**\n * When source maps are enabled, `style-loader` uses a link element
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("\nvar content = __webpack_require__(/*! !../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./testModule.scss */ \"./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./scss/testModule.scss\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./scss/testModule.scss?");
+
+/***/ }),
+
+/***/ "jquery":
+/*!********************************!*\
+  !*** external "window.jQuery" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = window.jQuery;\n\n//# sourceURL=webpack:///external_%22window.jQuery%22?");
 
 /***/ })
 

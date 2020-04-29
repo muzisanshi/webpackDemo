@@ -207,4 +207,5 @@ eval("module.exports = window.jQuery;\n\n//# sourceURL=webpack:///external_%22wi
 
 /***/ })
 
+console.log('fuck')
 /******/ });

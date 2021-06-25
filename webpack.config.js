@@ -1,6 +1,8 @@
 
 // html打包插件
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -10,6 +12,10 @@ module.exports = {
         path: __dirname+"/dist",
         filename: "[name].js"
     },
+	devServer:{
+		contentBase:"./dist",
+		hot:true
+	},
     module: {
         rules: [
             {test: /\.scss$/, use: ['style-loader','css-loader','sass-loader']},
@@ -24,7 +30,10 @@ module.exports = {
             filename:'index.html',
             template:'html/testModule.html',
             inject:"body"
-        })
+        }),
+		// new CleanWebpackPlugin(),
+		// new webpack.NamedModulesPlugin(),
+		new webpack.HotModuleReplacementPlugin()
     ],
     externals:{
         jquery:"window.jQuery"

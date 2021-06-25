@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = \"\\r\\n<!DOCTYPE html>\\r\\n<html>\\r\\n<head>\\r\\n\\t<title></title>\\r\\n</head>\\r\\n<body>\\r\\n\\t<div>\\r\\n\\t\\tHello,world!!!!!!!!!!!!!!!!!!\\r\\n\\t\\t<img src=\\\"\" + __webpack_require__(/*! ../img/logo_new.jpg */ \"./img/logo_new.jpg\") + \"\\\" style=\\\"width: 100px;\\\">\\r\\n\\t</div>\\r\\n\\t<script type=\\\"text/javascript\\\" src=\\\"../js/jquery-3.1.1.min.js\\\"></script>\\r\\n</body>\\r\\n</html>\\r\\n\";\n\n//# sourceURL=webpack:///./html/testModule.html?");
+eval("module.exports = \"\\r\\n<!DOCTYPE html>\\r\\n<html>\\r\\n<head>\\r\\n\\t<title></title>\\r\\n</head>\\r\\n<body>\\r\\n\\t<div>\\r\\n\\t\\tHello,world!\\r\\n\\t\\t<img src=\\\"\" + __webpack_require__(/*! ../img/logo_new.jpg */ \"./img/logo_new.jpg\") + \"\\\" style=\\\"width: 100px;\\\">\\r\\n\\t</div>\\r\\n\\t<script type=\\\"text/javascript\\\" src=\\\"../js/jquery-3.1.1.min.js\\\"></script>\\r\\n</body>\\r\\n</html>\\r\\n\";\n\n//# sourceURL=webpack:///./html/testModule.html?");
 
 /***/ }),
 
@@ -137,7 +137,7 @@ eval("\r\n// 加载文件内容\r\n__webpack_require__(/*! ../html/testModule.ht
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"body {\\n  background-color: green; }\\n  body p {\\n    color: red; }\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./scss/testModule.scss?./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js");
+eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"body {\\n  background-color: white; }\\n  body p {\\n    color: red; }\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./scss/testModule.scss?./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js");
 
 /***/ }),
 
@@ -159,7 +159,7 @@ eval("/*\n\tMIT License http://www.opensource.org/licenses/mit-license.php\n\tAu
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = \"module.exports = \\\"\\\\r\\\\n<!DOCTYPE html>\\\\r\\\\n<html>\\\\r\\\\n<head>\\\\r\\\\n\\\\t<title></title>\\\\r\\\\n</head>\\\\r\\\\n<body>\\\\r\\\\n\\\\t<div>\\\\r\\\\n\\\\t\\\\tHello,world!!!!!!!!!!!!!!!!!!\\\\r\\\\n\\\\t\\\\t<img src=\\\\\\\"\\\" + require(\\\"../img/logo_new.jpg\\\") + \\\"\\\\\\\" style=\\\\\\\"width: 100px;\\\\\\\">\\\\r\\\\n\\\\t</div>\\\\r\\\\n\\\\t<script type=\\\\\\\"text/javascript\\\\\\\" src=\\\\\\\"../js/jquery-3.1.1.min.js\\\\\\\"></script>\\\\r\\\\n</body>\\\\r\\\\n</html>\\\\r\\\\n\\\";\"\n\n//# sourceURL=webpack:///./html/testModule.html?./node_modules/raw-loader");
+eval("module.exports = \"module.exports = \\\"\\\\r\\\\n<!DOCTYPE html>\\\\r\\\\n<html>\\\\r\\\\n<head>\\\\r\\\\n\\\\t<title></title>\\\\r\\\\n</head>\\\\r\\\\n<body>\\\\r\\\\n\\\\t<div>\\\\r\\\\n\\\\t\\\\tHello,world!\\\\r\\\\n\\\\t\\\\t<img src=\\\\\\\"\\\" + require(\\\"../img/logo_new.jpg\\\") + \\\"\\\\\\\" style=\\\\\\\"width: 100px;\\\\\\\">\\\\r\\\\n\\\\t</div>\\\\r\\\\n\\\\t<script type=\\\\\\\"text/javascript\\\\\\\" src=\\\\\\\"../js/jquery-3.1.1.min.js\\\\\\\"></script>\\\\r\\\\n</body>\\\\r\\\\n</html>\\\\r\\\\n\\\";\"\n\n//# sourceURL=webpack:///./html/testModule.html?./node_modules/raw-loader");
 
 /***/ }),
 
@@ -207,5 +207,4 @@ eval("module.exports = window.jQuery;\n\n//# sourceURL=webpack:///external_%22wi
 
 /***/ })
 
-console.log('fuck')
 /******/ });
